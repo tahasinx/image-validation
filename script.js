@@ -7,11 +7,11 @@ UPLOADCARE_LOCALE_TRANSLATIONS = {
   },
   // messages for dialog’s error page
 };
-  
-UPLOADCARE_PUBLIC_KEY = '1814aea899668450820b'; 
+
+UPLOADCARE_PUBLIC_KEY = '1814aea899668450820b';
 
 function maxDimensions(width, height) {
-  return function(fileInfo) {
+  return function (fileInfo) {
     var imageInfo = fileInfo.originalImageInfo;
     if (imageInfo === null) {
       return;
@@ -29,16 +29,16 @@ function maxDimensions(width, height) {
     }
   };
 }
-$(function() {
-  $('[role=uploadcare-uploader]').each(function() {
+$(function () {
+  $('[role=uploadcare-uploader]').each(function () {
     console.log("enter");
     var input = $(this);
-    if ( ! input.data('maxWidth') && ! input.data('maxHeight')) {
+    if (!input.data('maxWidth') && !input.data('maxHeight')) {
       return;
     }
     console.log("init");
     var widget = uploadcare.Widget(input);
     widget.validators.push(maxDimensions(input.data('maxWidth'),
-                                         input.data('maxHeight')));
+      input.data('maxHeight')));
   });
 });
